@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { LoginButton } from './Login'
+import { LogoutButton } from './Logout'
 
-const Header = () => {
+const Headerlogout = () => {
   return (
     <Fragment>
         <nav className='navbar row'>
@@ -27,7 +27,7 @@ const Header = () => {
                 </div>
             </div>
             <div className='col-12 col-md-3 mt-4 mt-md-0 text-center'>
-                <LoginButton></LoginButton>
+                <LogoutButton></LogoutButton>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-shopping-cart fa-2x text-white"></i>
                 <span className='ml-1' id='cart_count'>2</span>
@@ -37,4 +37,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Headerlogout
