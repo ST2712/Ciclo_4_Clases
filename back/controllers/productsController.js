@@ -27,7 +27,8 @@ exports.getProductById = async (req, res, next) =>{
     if(!product){
         return res.status(404).json({
             success: false,
-            message: "No encontramos ese producto"
+            message: "No encontramos ese producto",
+            error:true
         })
     }
 
