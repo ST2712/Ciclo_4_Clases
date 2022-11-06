@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
+const jwt= require("jsonwebtoken")
 
 const usuarioSchema = new mongoose.Schema({
     nombre:{
@@ -43,12 +44,25 @@ const usuarioSchema = new mongoose.Schema({
     resetPasswordExpire: Date
 })
 
+//Se encripta la contraseña antes de guardarla
 usuarioSchema.pre("save", async function(next){
     if(!this.isModified("password")){
         next()
     }
     this.password = await bcrypt.hash(this.password, 10)
 })
+
+//Decodificar la contraseña y comparar
+usuarioSchema.methods.compararPass = async function (passDada){
+    return await bcrypt.compare(passDada, this.password)
+}
+
+//Retornar un JWT token
+usuarioSchema.methods.getJwToken = function () {
+    return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_TIEMPO_EXPIRACION
+    })
+}
 
 
 module.exports = mongoose.model("auth", usuarioSchema)
