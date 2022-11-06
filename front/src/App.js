@@ -5,22 +5,10 @@ import { Footer } from './components/layout/Footer';
 import { Home } from './components/Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ProductDetails } from './components/products/ProductDetails';
-//import { useAuth0 } from '@auth0/auth0-react';
-//import Headerlogout from './components/layout/Headerlogout';
-
-/*
-      {isAuthenticated ? (
-        <>
-        <Headerlogout></Headerlogout>
-        </>
-      ) : (
-        <Header></Header>
-      ) }
-*/
+import { Dashboard } from './components/admin/Dashboard';
+import ProductsList from './components/admin/ProductList';
 
 function App() {
-
-  //const { isAuthenticated } = useAuth0();
 
   return (
     <Router>
@@ -30,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/producto/:id" element={<ProductDetails/>}/>
+          <Route path="/admin/dashboard" element={<Dashboard/>}/>
+          <Route path="/ProductList" element={<ProductsList/>}/>
         </Routes>
       </div>
       <Footer/>
