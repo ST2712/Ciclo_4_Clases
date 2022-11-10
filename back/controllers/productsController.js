@@ -1,5 +1,5 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const producto = require("../models/prodctos");
+const producto = require("../models/productos");
 const ErrorHandler = require("../utils/errorHandler");
 const fetch = (url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //Usurpacion del require
 
